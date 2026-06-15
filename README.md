@@ -59,6 +59,8 @@ I also configured SLA tracking for first response and resolution targets using a
 
 The customer portal was organized into clear request groups so users can select the correct support request type.
 
+![Customer portal homepage](screenshots/customer-portal-homepage.png)
+
 ---
 
 ### Structured Intake Forms
@@ -67,13 +69,19 @@ The request forms were designed to collect useful information before the ticket 
 
 #### New User Access Request Form
 
+![New user access request form](screenshots/new-user-access-blank-form-redacted.jpg)
+
 #### Network/Wi-Fi Issue Form
+
+![Network Wi-Fi request form](screenshots/network-wifi-blank-form-redacted.jpg)
 
 ---
 
 ### Sample Ticket Workload
 
 I submitted multiple sample tickets through the customer portal to test the intake process and agent-side workflow.
+
+![All open Jira tickets](screenshots/all-open-tickets-redacted.png)
 
 ---
 
@@ -83,17 +91,31 @@ These screenshots show what submitted requests look like from the customer porta
 
 #### Department Network Outage
 
+![Customer-side network outage ticket](screenshots/customer-ticket-network-outage-redacted.png)
+
 #### New User Access Request
+
+![Customer-side new user access ticket](screenshots/customer-ticket-new-user-access-redacted.png)
 
 #### Hardware / Printer Issue
 
+![Customer-side hardware printer ticket](screenshots/customer-ticket-hardware-printer-redacted.png)
+
 #### VPN Issue
+
+![Customer-side VPN ticket](screenshots/customer-ticket-vpn-redacted.png)
 
 #### Laptop Wi-Fi Issue
 
+![Customer-side laptop Wi-Fi ticket](screenshots/customer-ticket-laptop-wifi-redacted.png)
+
 #### Password Reset Request
 
+![Customer-side password reset ticket](screenshots/customer-ticket-password-reset-redacted.png)
+
 #### Software Install Request
+
+![Customer-side software install request](screenshots/customer-ticket-software-install-redacted.png)
 
 ---
 
@@ -103,17 +125,31 @@ I configured queues to organize unresolved tickets by priority, request type, la
 
 #### New Requests Queue
 
+![New requests queue](screenshots/queue-new-requests-redacted.png)
+
 #### High Priority Queue
+
+![High priority queue](screenshots/queue-high-priority-redacted.png)
 
 #### Network Issues Queue
 
+![Network issues queue](screenshots/queue-network-issues-redacted.png)
+
 #### Access / Onboarding Queue
+
+![Access and onboarding queue](screenshots/queue-access-onboarding-redacted.png)
 
 #### Hardware Issues Queue
 
+![Hardware issues queue](screenshots/queue-hardware-issues-redacted.png)
+
 #### Software Requests Queue
 
+![Software requests queue](screenshots/queue-software-requests-redacted.png)
+
 #### Escalated Queue
+
+![Escalated queue](screenshots/queue-escalated-redacted.png)
 
 ---
 
@@ -123,9 +159,15 @@ These screenshots show the agent-side view used to review ticket details, priori
 
 #### Department Network Outage
 
+![Agent-side network outage ticket](screenshots/agent-ticket-network-outage-redacted.png)
+
 #### New User Access Request
 
+![Agent-side new user access ticket](screenshots/agent-ticket-new-user-access-redacted.png)
+
 #### Hardware / Printer Issue
+
+![Agent-side hardware printer ticket](screenshots/agent-ticket-hardware-printer-redacted.png)
 
 ---
 
@@ -133,9 +175,15 @@ These screenshots show the agent-side view used to review ticket details, priori
 
 I configured a business-hours calendar for SLA tracking.
 
-I configured a T to First Response SLA with targets based on ticket priority.
+![SLA business hours calendar](screenshots/sla-business-hours-calendar.png)
+
+I configured a Time to First Response SLA with targets based on ticket priority.
+
+![Time to first response SLA configuration](screenshots/sla-time-to-first-response.png)
 
 I also configured a Time to Resolution SLA with priority-based resolution targets.
+
+![Time to resolution SLA configuration](screenshots/sla-time-to-resolution.png)
 
 ---
 
@@ -145,7 +193,11 @@ These screenshots show SLA timers applied to real tickets after the SLA rules we
 
 #### Network Outage SLA View
 
+![SLA timers on network outage ticket](screenshots/ticket-network-outage-sla-redacted.png)
+
 #### Hardware Printer SLA View
+
+![SLA timers on hardware printer ticket](screenshots/ticket-hardware-printer-sla-redacted.png)
 
 ---
 
