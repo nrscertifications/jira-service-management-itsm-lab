@@ -49,7 +49,7 @@ Each form enforces field requirements to capture critical triage details—such 
 To validate the portal’s ingestion logic, I processed a simulated multi-priority workload through the system. From the agent console, I evaluated ticket payloads and applied operational metadata (priorities, component labels, and impact scopes). This process successfully isolated standard service fulfillment tasks from high-urgency incidents like VPN drops or department outages.
 
 ### 4. JQL-Based Queue Segmentation
-Instead of relying on standard out-of-the-box Jira views, I constructed custom queues utilizing precise **Jira Query Language (JQL)** expressions. This architecture dynamically prioritizes unresolved issues by urgency and technical silo:
+Instead of relying on standard out-of-the-box Jira views, I constructed custom queues utilizing precise Jira Query Language (JQL) expressions. This architecture dynamically prioritizes unresolved issues by urgency and technical silo:
 * **New Requests:** Inbound unassigned tickets awaiting initial triage.
 * **High Priority:** P1/P2 incidents threatening business continuity.
 * **Network Issues:** Local and wide-area connectivity faults.
