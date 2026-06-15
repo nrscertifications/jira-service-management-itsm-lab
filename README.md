@@ -1,238 +1,222 @@
-# Jira Service Management ITSM Lab
+# Jira Service Management (JSM) ITSM Configuration Lab
 
 ## Project Overview
 
-This project is a hands-on Jira Service Management lab I built to practice customer intake, ticket triage, queues, SLAs, and escalation workflow documentation.
+This repository documents a functional Jira Service Management (JSM) ITSM environment focused on structured data ingestion, ticket triage, queue design, SLA tracking, and multi-tier escalation logic. 
 
-The goal was to create a realistic service desk setup where users can submit requests through a customer portal, and an IT support agent can review, prioritize, organize, and track the work from the agent side.
+I engineered this operational service desk workflow to seamlessly bridge user-facing request portals with back-end agent management. The core objective was to simulate how an enterprise IT support infrastructure captures, segregates, prioritizes, and routes service requests and active incidents.
 
-This lab is focused on the type of workflow used in Help Desk, Service Desk, IT Support Technician, and junior Tier 1 / Tier 1.5 support roles.
+This environment aligns directly with operational workflows utilized in high-volume Help Desk, Service Desk Analyst, Tier 1.5, and Junior Tier 2 Support environments. 
 
-All screenshots use demo data and redacted customer information.
-
----
-
-## Tools Used
-
-* Jira Service Management
-* Jira Customer Portal
-* Jira Queues
-* JQL filters
-* SLA configuration
-* Business-hours calendar
-* Ticket priorities and labels
-* Markdown documentation
-* GitHub for project documentation
+> **Note:** All configurations were validated using a simulated multi-priority workload. All screenshots feature demo data and redacted customer identifiers.
 
 ---
 
-## What I Built
+## Core Technical Skills & Tools
 
-I configured a Jira Service Management project with customer-facing request types and agent-side ticket management.
+* **ITSM Platform:** Jira Service Management (JSM)
+* **Data Ingestion:** Jira Customer Portal, request type mapping, structured intake forms
+* **Queue Architecture:** Ticket segmentation, custom JQL (Jira Query Language) filtering
+* **Ticket Triage:** Urgency & business impact mapping, priority tiering, operational labeling
+* **SLA Management:** Time to First Response, Time to Resolution, custom business-hours calendars
+* **Technical Documentation:** Escalation workflows, multi-tier handoff logic, Markdown configuration
+* **Repository Versioning:** Git, GitHub file structure synchronization
 
-The customer portal includes request groups for:
+---
 
+## Functional Architecture
+
+### 1. Structured Intake & Shift-Left Design
+I configured the user-facing customer portal into distinct, logical support categories. This operational design encourages user self-categorization at the point of ingestion, routing issues to the correct framework before an agent ever touches the ticket.
+
+The portal segregates requests into four foundational categories:
 * Hardware and device issues
 * Access and account requests
-* Application/software requests
+* Application and software requests
 * Network and infrastructure issues
 
-I created structured request forms for common IT support scenarios, including:
+This framework establishes clean data input, drastically reducing ticket bounce rates and minimizing unnecessary back-and-forth communication cycles between users and the service desk.
 
-* Password reset
-* Software install request
-* New user access request
-* Hardware issue
-* Network/Wi-Fi issue
-* VPN issue
-* Department network outage
+### 2. Request Type & Ingestion Form Engineering
+I built structured intake forms for common enterprise IT support scenarios, including:
+* **Self-Service & Identity:** Password resets, New user access requests
+* **Endpoint & Software:** Software installation requests, Local hardware issues
+* **Infrastructure & Network:** Network/Wi-Fi faults, VPN connectivity drops, Department-wide network outages
 
-On the agent side, I created sample tickets, applied priorities and labels, and built queues to organize incoming work by support category and urgency.
+Each form enforces field requirements to capture critical triage details—such as urgency, business impact, affected services, and necessary approval managers—ensuring support agents have immediate context to begin troubleshooting or escalation.
 
-I also configured SLA tracking for first response and resolution targets using a business-hours calendar.
+### 3. Agent-Side Workspace & Triage Logic
+To validate the portal’s ingestion logic, I processed a simulated multi-priority workload through the system. From the agent console, I evaluated ticket payloads and applied operational metadata (priorities, component labels, and impact scopes). This process successfully isolated standard service fulfillment tasks from high-urgency incidents like VPN drops or department outages.
+
+### 4. JQL-Based Queue Segmentation
+Instead of relying on standard out-of-the-box Jira views, I constructed custom queues utilizing precise **Jira Query Language (JQL)** expressions. This architecture dynamically prioritizes unresolved issues by urgency and technical silo:
+* **New Requests:** Inbound unassigned tickets awaiting initial triage.
+* **High Priority:** P1/P2 incidents threatening business continuity.
+* **Network Issues:** Local and wide-area connectivity faults.
+* **Access / Onboarding:** Identity management and account provisions.
+* **Hardware Issues:** Physical workstation, peripheral, and printer assets.
+* **Software Requests:** Application deployments and licensing requests.
+* **Escalated:** Tickets breaching or nearing SLA limits requiring tier transitions.
+
+This configuration ensures an active support team maintains clear visibility over high-impact tickets rather than scrolling through an unorganized, chronological list.
+
+### 5. SLA Metric Enforcement
+I engineered automated Service Level Agreement (SLA) tracking rules tied to an organizational business-hours calendar. This configuration includes:
+* **Time to First Response SLA:** Aggressive, priority-driven response targets to ensure rapid initial evaluation.
+* **Time to Resolution SLA:** Defined resolution timelines mapped to incident severity.
+* **Business-Hours Integration:** Calendar constraints that pause SLA countdowns during non-operational hours, protecting team metrics from artificial decay.
 
 ---
 
-## Screenshots
+## Configuration Walkthrough & Evidence
 
 ### Customer Portal
-
-The customer portal was organized into clear request groups so users can select the correct support request type.
+The user portal interface presents clean service categories to prevent incorrect ticket routing by end-users.
 
 ![Customer portal homepage](screenshots/customer-portal-homepage.png)
 
 ---
 
 ### Structured Intake Forms
-
-The request forms were designed to collect useful information before the ticket reaches the support queue. This helps reduce back-and-forth and gives the support agent better information for triage.
+These forms capture diagnostic data before requests hit the support queue, accelerating initial triage workflows.
 
 #### New User Access Request Form
-
+Surfaces required fields for requested systems, business impact tiers, urgency, and manager/approver selection.
 ![New user access request form](screenshots/new-user-access-blank-form-redacted.jpg)
 
 #### Network/Wi-Fi Issue Form
-
+Gathers symptom details, affected hardware locations, and supporting logs or screenshots upfront.
 ![Network Wi-Fi request form](screenshots/network-wifi-blank-form-redacted.jpg)
 
 ---
 
-### Sample Ticket Workload
-
-I submitted multiple sample tickets through the customer portal to test the intake process and agent-side workflow.
+### Simulated Ticket Workload
+A diverse operational backlog was generated to validate the ingestion rules, labeling mechanics, and active SLA behavior.
 
 ![All open Jira tickets](screenshots/all-open-tickets-redacted.png)
 
 ---
 
 ### Customer-Side Ticket Examples
-
-These screenshots show what submitted requests look like from the customer portal side.
+These screenshots demonstrate the transparency loop from the user's perspective as they track ticket lifecycle status.
 
 #### Department Network Outage
-
 ![Customer-side network outage ticket](screenshots/customer-ticket-network-outage-redacted.png)
 
 #### New User Access Request
-
 ![Customer-side new user access ticket](screenshots/customer-ticket-new-user-access-redacted.png)
 
 #### Hardware / Printer Issue
-
 ![Customer-side hardware printer ticket](screenshots/customer-ticket-hardware-printer-redacted.png)
 
-#### VPN Issue
-
+#### VPN Connectivity Issue
 ![Customer-side VPN ticket](screenshots/customer-ticket-vpn-redacted.png)
 
 #### Laptop Wi-Fi Issue
-
 ![Customer-side laptop Wi-Fi ticket](screenshots/customer-ticket-laptop-wifi-redacted.png)
 
 #### Password Reset Request
-
 ![Customer-side password reset ticket](screenshots/customer-ticket-password-reset-redacted.png)
 
 #### Software Install Request
-
 ![Customer-side software install request](screenshots/customer-ticket-software-install-redacted.png)
 
 ---
 
-### Queues and JQL Filters
-
-I configured queues to organize unresolved tickets by priority, request type, label, and support category.
+### JQL-Driven Agent Queues
+These views showcase the custom JQL queue separation, effectively categorizing workloads by technical domain and priority.
 
 #### New Requests Queue
-
 ![New requests queue](screenshots/queue-new-requests-redacted.png)
 
 #### High Priority Queue
-
 ![High priority queue](screenshots/queue-high-priority-redacted.png)
 
 #### Network Issues Queue
-
 ![Network issues queue](screenshots/queue-network-issues-redacted.png)
 
 #### Access / Onboarding Queue
-
 ![Access and onboarding queue](screenshots/queue-access-onboarding-redacted.png)
 
 #### Hardware Issues Queue
-
 ![Hardware issues queue](screenshots/queue-hardware-issues-redacted.png)
 
 #### Software Requests Queue
-
 ![Software requests queue](screenshots/queue-software-requests-redacted.png)
 
 #### Escalated Queue
-
 ![Escalated queue](screenshots/queue-escalated-redacted.png)
 
 ---
 
 ### Agent-Side Ticket Triage
-
-These screenshots show the agent-side view used to review ticket details, priority, labels, reporter, request type, and support context.
+The internal agent view surfaces key metadata layout optimizations, allowing agents to instantly evaluate impact boundaries and escalation contexts.
 
 #### Department Network Outage
-
+An example of a critical infrastructure incident impacting multi-user system access.
 ![Agent-side network outage ticket](screenshots/agent-ticket-network-outage-redacted.png)
 
 #### New User Access Request
-
+An identity management payload displaying workflow progress and provisioning paths.
 ![Agent-side new user access ticket](screenshots/agent-ticket-new-user-access-redacted.png)
 
 #### Hardware / Printer Issue
-
+A typical local asset incident mapping localized disruption context.
 ![Agent-side hardware printer ticket](screenshots/agent-ticket-hardware-printer-redacted.png)
 
 ---
 
-### SLA Configuration
+### SLA Target Configuration
+I aligned the backend SLA engine with corporate constraints by defining operational calendars and metric objectives.
 
-I configured a business-hours calendar for SLA tracking.
-
+#### Business-Hours Calendar
 ![SLA business hours calendar](screenshots/sla-business-hours-calendar.png)
 
-I configured a Time to First Response SLA with targets based on ticket priority.
-
+#### Time to First Response SLA
+Priority-stratified targets defining the initial acknowledgment matrix.
 ![Time to first response SLA configuration](screenshots/sla-time-to-first-response.png)
 
-I also configured a Time to Resolution SLA with priority-based resolution targets.
-
+#### Time to Resolution SLA
+Enforced timelines defining strict bounds for complete incident remediation.
 ![Time to resolution SLA configuration](screenshots/sla-time-to-resolution.png)
 
 ---
 
 ### SLA Applied to Tickets
-
-These screenshots show SLA timers applied to real tickets after the SLA rules were configured.
+These live ticket instances prove the background SLA engine actively monitors and holds support operations accountable to operational deadlines.
 
 #### Network Outage SLA View
-
 ![SLA timers on network outage ticket](screenshots/ticket-network-outage-sla-redacted.png)
 
 #### Hardware Printer SLA View
-
 ![SLA timers on hardware printer ticket](screenshots/ticket-hardware-printer-sla-redacted.png)
 
 ---
 
-## Skills Demonstrated
+## Core Competencies Demonstrated
 
-This project demonstrates practical service desk and IT support skills, including:
-
-* Configuring Jira Service Management request types
-* Building a customer-facing support portal
-* Creating structured intake forms
-* Using priorities, labels, and request types for ticket triage
-* Creating queues with JQL filters
-* Organizing tickets by urgency and support category
-* Configuring SLAs for first response and resolution
-* Using a business-hours calendar for SLA tracking
-* Reviewing tickets from both customer-side and agent-side views
-* Documenting escalation logic for Tier 1, Tier 2, admin, network, and security handoff
-* Writing clear technical documentation for a support workflow
+* **ITSM Tool Configuration:** Mapping business operational needs directly into Jira Service Management components.
+* **Data Integrity Architecture:** Engineering rigid intake structures to capture rich, diagnostic context from users.
+* **Workload Optimization:** Leveraging advanced JQL filter syntax to isolate critical issues and prioritize agent focus.
+* **SLA Compliance Controls:** Configuring dual-layer response/resolution SLA tracking around explicit business-hour policies.
+* **Technical Workflow Documentation:** Formulating clear, markdown-based escalation pathways mapping technical handoffs to specialized system admins, network engineers, and security teams.
 
 ---
 
-## Documentation
+## Project Documentation
 
-More detailed documentation is available in the `docs` folder:
-
+Deep-dive operational playbooks and exact structural configurations are located in the `docs` folder:
 * [Project Overview](docs/project-overview.md)
-* [JQL Queues](docs/jql-queues.md)
-* [SLA Configuration](docs/sla-configuration.md)
-* [Escalation Workflow](docs/escalation-workflow.md)
+* [JQL Queues Matrix](docs/jql-queues.md)
+* [SLA Configuration Guide](docs/sla-configuration.md)
+* [Escalation & Handoff Workflow](docs/escalation-workflow.md)
 
 ---
 
-## Interview Summary
+## Interview Summary (The Pitch)
 
-I built this Jira Service Management lab to practice how a service desk handles incoming IT support requests. I configured a customer portal, created structured request forms, generated sample tickets, organized tickets using queues and JQL filters, configured SLA targets, and documented escalation rules.
+I configured this Jira Service Management environment to thoroughly master how a modern, efficient IT service desk scales its ticket handling. Instead of just learning how to close tickets, I focused on the administrative logic behind queue architecture and data quality. 
 
-This project helped me understand how support teams collect ticket information, prioritize work, track first response and resolution times, and decide when to escalate issues to higher support levels.
+I engineered a 'shift-left' strategy using structured portal intake forms to capture technical variables upfront, removing the standard back-and-forth communication cycle. I then designed targeted JQL filters so the queues automatically surface the right work, separating standard provisioning requests from critical, high-impact infrastructure incidents. Finally, I applied a custom business-hours calendar to govern first-response and resolution SLA metrics. 
 
+This project demonstrates my practical understanding of the complete incident lifecycle, workload management, and the exact tool configurations needed to maximize service desk efficiency.
