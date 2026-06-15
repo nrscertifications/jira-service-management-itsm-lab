@@ -210,13 +210,3 @@ Deep-dive operational playbooks and exact structural configurations are located 
 * [JQL Queues Matrix](docs/jql-queues.md)
 * [SLA Configuration Guide](docs/sla-configuration.md)
 * [Escalation & Handoff Workflow](docs/escalation-workflow.md)
-
----
-
-## Interview Summary (The Pitch)
-
-I configured this Jira Service Management environment to thoroughly master how a modern, efficient IT service desk scales its ticket handling. Instead of just learning how to close tickets, I focused on the administrative logic behind queue architecture and data quality. 
-
-I engineered a 'shift-left' strategy using structured portal intake forms to capture technical variables upfront, removing the standard back-and-forth communication cycle. I then designed targeted JQL filters so the queues automatically surface the right work, separating standard provisioning requests from critical, high-impact infrastructure incidents. Finally, I applied a custom business-hours calendar to govern first-response and resolution SLA metrics. 
-
-This project demonstrates my practical understanding of the complete incident lifecycle, workload management, and the exact tool configurations needed to maximize service desk efficiency.
